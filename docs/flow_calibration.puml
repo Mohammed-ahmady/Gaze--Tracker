@@ -1,0 +1,29 @@
+@startuml
+title Calibration and Runtime Flow
+start
+:Start Camera Preview;
+if (Has saved calibration?) then (no)
+  :Start calibration sequence;
+  repeat
+    :Show calibration dot (overlay);
+    :Collect N frames for this point;
+    :Average and store eye features;
+  repeat while (more points)
+  :Train polynomial model (degree=2) + RBF backup;
+  :Save calibration data and model;
+else (yes)
+  :Load calibration model;
+endif
+:Enter runtime loop;
+repeat
+  :Capture frame;
+  :Detect face & landmarks (MediaPipe);
+  :Extract eye-relative ratios and nose tip;
+  :Predict screen coordinates (calibration_map);
+  if (Smoothing enabled?) then (yes)
+    :Apply Kalman filter and EMA;
+  endif
+  :Move cursor (PyAutoGUI);
+repeat while (running)
+stop
+@enduml

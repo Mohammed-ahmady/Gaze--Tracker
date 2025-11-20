@@ -1,0 +1,92 @@
+2025-11-19 12:56:48 |     INFO | ================================================================================
+2025-11-19 12:56:48 |     INFO | Eye Tracking Session Started - ID: 20251119_125648
+2025-11-19 12:56:48 |     INFO | ================================================================================
+2025-11-19 12:56:51 |     INFO | Screen Resolution: 1920x1080
+2025-11-19 12:56:51 |     INFO | Camera Resolution: 640x480
+2025-11-19 12:56:51 |     INFO | Camera FPS: 30.00003000003
+2025-11-19 12:57:13 |     INFO | 
+2025-11-19 12:57:13 |     INFO | ================================================================================
+2025-11-19 12:57:13 |     INFO | CALIBRATION STARTED - 21 points, 60 frames/point
+2025-11-19 12:57:13 |     INFO | ================================================================================
+2025-11-19 12:57:13 |     INFO | Calibration Point 1: Screen(96, 54)
+2025-11-19 12:57:16 |     INFO | Calibration Point 2: Screen(528, 54)
+2025-11-19 12:57:20 |     INFO | Calibration Point 3: Screen(960, 54)
+2025-11-19 12:57:24 |     INFO | Calibration Point 4: Screen(1392, 54)
+2025-11-19 12:57:27 |     INFO | Calibration Point 5: Screen(1824, 54)
+2025-11-19 12:57:31 |     INFO | Calibration Point 6: Screen(528, 324)
+2025-11-19 12:57:34 |     INFO | Calibration Point 7: Screen(960, 324)
+2025-11-19 12:57:38 |     INFO | Calibration Point 8: Screen(1392, 324)
+2025-11-19 12:57:42 |     INFO | Calibration Point 9: Screen(96, 540)
+2025-11-19 12:57:45 |     INFO | Calibration Point 10: Screen(528, 540)
+2025-11-19 12:57:49 |     INFO | Calibration Point 11: Screen(960, 540)
+2025-11-19 12:57:52 |     INFO | Calibration Point 12: Screen(1392, 540)
+2025-11-19 12:57:56 |     INFO | Calibration Point 13: Screen(1824, 540)
+2025-11-19 12:58:00 |     INFO | Calibration Point 14: Screen(528, 756)
+2025-11-19 12:58:03 |     INFO | Calibration Point 15: Screen(960, 756)
+2025-11-19 12:58:07 |     INFO | Calibration Point 16: Screen(1392, 756)
+2025-11-19 12:58:10 |     INFO | Calibration Point 17: Screen(96, 1026)
+2025-11-19 12:58:14 |     INFO | Calibration Point 18: Screen(528, 1026)
+2025-11-19 12:58:18 |     INFO | Calibration Point 19: Screen(960, 1026)
+2025-11-19 12:58:21 |     INFO | Calibration Point 20: Screen(1392, 1026)
+2025-11-19 12:58:25 |     INFO | Calibration Point 21: Screen(1824, 1026)
+2025-11-19 12:58:28 |     INFO | 
+2025-11-19 12:58:28 |     INFO | ================================================================================
+2025-11-19 12:58:28 |     INFO | CALIBRATION COMPLETE
+2025-11-19 12:58:28 |     INFO | ================================================================================
+2025-11-19 12:58:28 |     INFO | Total samples collected: 1259
+2025-11-19 12:58:28 |     INFO | Training Error X: 72.48 pixels
+2025-11-19 12:58:28 |     INFO | Training Error Y: 74.54 pixels
+2025-11-19 12:58:28 |     INFO | ================================================================================
+2025-11-19 12:58:28 |     INFO | Calibration data saved to: logs\session_20251119_125648\calibration.json
+2025-11-19 12:59:28 |     INFO | 
+2025-11-19 12:59:28 |     INFO | ================================================================================
+Eye Tracking Analysis - Session 20251119_125648
+================================================================================
+
+CALIBRATION ANALYSIS:
+----------------------------------------
+Calibration Points: 21
+Total Samples: 1259
+Samples per Point: 59
+
+Training Error X: N/A
+Training Error Y: N/A
+
+Per-Point Variability:
+  Point 1 (96, 54): L_std(0.0167, 0.0175) R_std(0.0078, 0.0232)
+  Point 2 (528, 54): L_std(0.0213, 0.0243) R_std(0.0375, 0.0283)
+  Point 3 (960, 54): L_std(0.0082, 0.0182) R_std(0.0093, 0.0210)
+  Point 4 (1392, 54): L_std(0.0075, 0.0117) R_std(0.0076, 0.0121)
+  Point 5 (1824, 54): L_std(0.0075, 0.0089) R_std(0.0092, 0.0111)
+  Point 6 (528, 324): L_std(0.0189, 0.0193) R_std(0.0171, 0.0167)
+  Point 7 (960, 324): L_std(0.0078, 0.0159) R_std(0.0060, 0.0139)
+  Point 8 (1392, 324): L_std(0.0078, 0.0108) R_std(0.0080, 0.0168)
+  Point 9 (96, 540): L_std(0.0249, 0.0795) R_std(0.0262, 0.0815)
+  Point 10 (528, 540): L_std(0.0061, 0.0141) R_std(0.0063, 0.0129)
+  Point 11 (960, 540): L_std(0.0135, 0.0650) R_std(0.0091, 0.0560)
+  Point 12 (1392, 540): L_std(0.0076, 0.0126) R_std(0.0079, 0.0161)
+  Point 13 (1824, 540): L_std(0.0089, 0.0142) R_std(0.0082, 0.0290)
+  Point 14 (528, 756): L_std(0.0198, 0.0697) R_std(0.0235, 0.0740)
+  Point 15 (960, 756): L_std(0.0087, 0.0185) R_std(0.0068, 0.0152)
+  Point 16 (1392, 756): L_std(0.0087, 0.0129) R_std(0.0103, 0.0154)
+  Point 17 (96, 1026): L_std(0.0239, 0.0185) R_std(0.0194, 0.0180)
+  Point 18 (528, 1026): L_std(0.0116, 0.0163) R_std(0.0071, 0.0190)
+  Point 19 (960, 1026): L_std(0.0054, 0.0132) R_std(0.0057, 0.0181)
+  Point 20 (1392, 1026): L_std(0.0249, 0.0188) R_std(0.0218, 0.0186)
+  Point 21 (1824, 1026): L_std(0.0141, 0.0201) R_std(0.0182, 0.0215)
+
+TRACKING ANALYSIS:
+----------------------------------------
+Total tracking frames: 55
+
+RECOMMENDATIONS:
+----------------------------------------
+✓ GOOD TRAINING ERROR - Calibration quality is acceptable
+
+================================================================================
+Log files saved in: C:\Users\Mohammed\PycharmProjects\GazeAssistsudo\logs\session_20251119_125648
+  - Main log: session.log
+  - Calibration: calibration.json
+  - Tracking CSV: tracking.csv
+  - Errors: errors.log
+================================================================================

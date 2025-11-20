@@ -1,0 +1,31 @@
+2025-11-19 09:11:41 |     INFO | ================================================================================
+2025-11-19 09:11:41 |     INFO | Eye Tracking Session Started - ID: 20251119_091141
+2025-11-19 09:11:41 |     INFO | ================================================================================
+2025-11-19 09:11:44 |     INFO | Screen Resolution: 1920x1080
+2025-11-19 09:11:44 |     INFO | Camera Resolution: 640x480
+2025-11-19 09:11:44 |     INFO | Camera FPS: 30.00003000003
+2025-11-19 09:11:56 |     INFO | 
+2025-11-19 09:11:56 |     INFO | ================================================================================
+2025-11-19 09:11:56 |     INFO | CALIBRATION STARTED - 21 points, 60 frames/point
+2025-11-19 09:11:56 |     INFO | ================================================================================
+2025-11-19 09:11:56 |     INFO | Calibration Point 1: Screen(96, 54)
+2025-11-19 09:11:58 |     INFO | Calibration Point 2: Screen(528, 54)
+2025-11-19 09:12:00 |     INFO | Calibration Point 3: Screen(960, 54)
+2025-11-19 09:12:02 |     INFO | Calibration Point 4: Screen(1392, 54)
+2025-11-19 09:12:04 |     INFO | Calibration Point 5: Screen(1824, 54)
+2025-11-19 09:12:06 |     INFO | Calibration Point 6: Screen(528, 324)
+2025-11-19 09:12:08 |     INFO | Calibration Point 7: Screen(960, 324)
+2025-11-19 09:12:10 |     INFO | Calibration Point 8: Screen(1392, 324)
+2025-11-19 09:12:12 |     INFO | Calibration Point 9: Screen(96, 540)
+2025-11-19 09:12:14 |     INFO | Calibration Point 10: Screen(528, 540)
+2025-11-19 09:12:16 |     INFO | Calibration Point 11: Screen(960, 540)
+2025-11-19 09:12:18 |     INFO | Calibration Point 12: Screen(1392, 540)
+2025-11-19 09:12:20 |     INFO | Calibration Point 13: Screen(1824, 540)
+2025-11-19 09:12:22 |     INFO | Calibration Point 14: Screen(528, 756)
+2025-11-19 09:12:24 |     INFO | Calibration Point 15: Screen(960, 756)
+2025-11-19 09:12:26 |     INFO | Calibration Point 16: Screen(1392, 756)
+2025-11-19 09:12:28 |     INFO | Calibration Point 17: Screen(96, 1026)
+2025-11-19 09:12:30 |     INFO | Calibration Point 18: Screen(528, 1026)
+2025-11-19 09:12:32 |     INFO | Calibration Point 19: Screen(960, 1026)
+2025-11-19 09:12:34 |     INFO | Calibration Point 20: Screen(1392, 1026)
+2025-11-19 09:12:36 |     INFO | Calibration Point 21: Screen(1824, 1026)

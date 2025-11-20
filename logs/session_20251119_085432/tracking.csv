@@ -1,0 +1,1 @@
+timestamp,frame_count,left_eye_x,left_eye_y,right_eye_x,right_eye_y,avg_eye_x,avg_eye_y,nose_x,nose_y,predicted_x,predicted_y,smoothed_x,smoothed_y,cursor_x,cursor_y,face_detected,left_ear,right_ear,blink_detected,smoothing_enabled,gain,mode

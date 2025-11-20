@@ -1,0 +1,51 @@
+================================================================================
+Eye Tracking Analysis - Session 20251119_085916
+================================================================================
+
+CALIBRATION ANALYSIS:
+----------------------------------------
+Calibration Points: 21
+Total Samples: 1259
+Samples per Point: 59
+
+Training Error X: N/A
+Training Error Y: N/A
+
+Per-Point Variability:
+  Point 1 (96, 54): L_std(0.0221, 0.0180) R_std(0.0212, 0.0181)
+  Point 2 (528, 54): L_std(0.0076, 0.0119) R_std(0.0101, 0.0092)
+  Point 3 (960, 54): L_std(0.0115, 0.0131) R_std(0.0103, 0.0107)
+  Point 4 (1392, 54): L_std(0.0125, 0.0142) R_std(0.0147, 0.0139)
+  Point 5 (1824, 54): L_std(0.0162, 0.0168) R_std(0.0135, 0.0079)
+  Point 6 (528, 324): L_std(0.0366, 0.0450) R_std(0.0383, 0.0596)
+  Point 7 (960, 324): L_std(0.0109, 0.0156) R_std(0.0150, 0.0132)
+  Point 8 (1392, 324): L_std(0.0102, 0.0149) R_std(0.0147, 0.0131)
+  Point 9 (96, 540): L_std(0.0309, 0.0204) R_std(0.0315, 0.0322)
+  Point 10 (528, 540): L_std(0.0113, 0.0104) R_std(0.0099, 0.0107)
+  Point 11 (960, 540): L_std(0.0125, 0.0115) R_std(0.0121, 0.0147)
+  Point 12 (1392, 540): L_std(0.0155, 0.0131) R_std(0.0180, 0.0171)
+  Point 13 (1824, 540): L_std(0.0145, 0.0153) R_std(0.0158, 0.0081)
+  Point 14 (528, 756): L_std(0.0382, 0.0159) R_std(0.0413, 0.0277)
+  Point 15 (960, 756): L_std(0.0108, 0.0103) R_std(0.0099, 0.0125)
+  Point 16 (1392, 756): L_std(0.0155, 0.0109) R_std(0.0145, 0.0191)
+  Point 17 (96, 1026): L_std(0.0421, 0.0162) R_std(0.0445, 0.0368)
+  Point 18 (528, 1026): L_std(0.0117, 0.0118) R_std(0.0100, 0.0129)
+  Point 19 (960, 1026): L_std(0.0135, 0.0126) R_std(0.0127, 0.0106)
+  Point 20 (1392, 1026): L_std(0.0151, 0.0129) R_std(0.0138, 0.0175)
+  Point 21 (1824, 1026): L_std(0.0136, 0.0182) R_std(0.0141, 0.0121)
+
+TRACKING ANALYSIS:
+----------------------------------------
+Total tracking frames: 0
+
+RECOMMENDATIONS:
+----------------------------------------
+✓ GOOD TRAINING ERROR - Calibration quality is acceptable
+
+================================================================================
+Log files saved in: C:\Users\Mohammed\PycharmProjects\GazeAssistsudo\logs\session_20251119_085916
+  - Main log: session.log
+  - Calibration: calibration.json
+  - Tracking CSV: tracking.csv
+  - Errors: errors.log
+================================================================================

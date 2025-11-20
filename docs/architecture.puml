@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+skinparam dpi 150
+
+actor User
+
+rectangle "Camera + CV" {
+  [Camera (OpenCV)]
+  [MediaPipe Face Mesh]
+}
+
+rectangle "Feature Extraction" {
+  [Iris center]
+  [Eye-relative ratios]
+  [Nose tip (head pos)]
+}
+
+rectangle "Calibration System" {
+  [Multi-point grid]
+  [PolynomialFeatures + Ridge]
+  [RBF fallback]
+}
+
+rectangle "Mapping & Control" {
+  [Predictor]
+  [Smoothing (Kalman + EMA)]
+  [Output gain]
+  [PyAutoGUI cursor move]
+}
+
+rectangle "UI" {
+  [Control Window (OpenCV)]
+  [Calibration Overlay (Tkinter)]
+}
+
+User --> [Control Window (OpenCV)]
+[Camera (OpenCV)] --> [MediaPipe Face Mesh]
+[MediaPipe Face Mesh] --> [Iris center]
+[Iris center] --> [Eye-relative ratios]
+[Eye-relative ratios] --> [Multi-point grid]
+[Multi-point grid] --> [PolynomialFeatures + Ridge]
+[PolynomialFeatures + Ridge] --> [Predictor]
+[RBF fallback] --> [Predictor]
+[Predictor] --> [Smoothing (Kalman + EMA)]
+[Smoothing (Kalman + EMA)] --> [PyAutoGUI cursor move]
+[Control Window (OpenCV)] --> [Calibration Overlay (Tkinter)]
+@enduml

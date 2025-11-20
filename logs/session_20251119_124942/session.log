@@ -1,0 +1,62 @@
+2025-11-19 12:49:42 |     INFO | ================================================================================
+2025-11-19 12:49:42 |     INFO | Eye Tracking Session Started - ID: 20251119_124942
+2025-11-19 12:49:42 |     INFO | ================================================================================
+2025-11-19 12:49:45 |     INFO | Screen Resolution: 1920x1080
+2025-11-19 12:49:45 |     INFO | Camera Resolution: 640x480
+2025-11-19 12:49:45 |     INFO | Camera FPS: 30.00003000003
+2025-11-19 12:50:08 |     INFO | 
+2025-11-19 12:50:08 |     INFO | ================================================================================
+2025-11-19 12:50:08 |     INFO | CALIBRATION STARTED - 21 points, 60 frames/point
+2025-11-19 12:50:08 |     INFO | ================================================================================
+2025-11-19 12:50:09 |     INFO | Calibration Point 1: Screen(96, 54)
+2025-11-19 12:50:11 |     INFO | Calibration Point 2: Screen(528, 54)
+2025-11-19 12:50:15 |     INFO | Calibration Point 3: Screen(960, 54)
+2025-11-19 12:50:19 |     INFO | Calibration Point 4: Screen(1392, 54)
+2025-11-19 12:50:22 |     INFO | Calibration Point 5: Screen(1824, 54)
+2025-11-19 12:50:26 |     INFO | Calibration Point 6: Screen(528, 324)
+2025-11-19 12:50:29 |     INFO | Calibration Point 7: Screen(960, 324)
+2025-11-19 12:50:33 |     INFO | Calibration Point 8: Screen(1392, 324)
+2025-11-19 12:50:37 |     INFO | Calibration Point 9: Screen(96, 540)
+2025-11-19 12:50:40 |     INFO | Calibration Point 10: Screen(528, 540)
+2025-11-19 12:50:44 |     INFO | Calibration Point 11: Screen(960, 540)
+2025-11-19 12:50:47 |     INFO | Calibration Point 12: Screen(1392, 540)
+2025-11-19 12:50:51 |     INFO | Calibration Point 13: Screen(1824, 540)
+2025-11-19 12:50:55 |     INFO | Calibration Point 14: Screen(528, 756)
+2025-11-19 12:50:58 |     INFO | Calibration Point 15: Screen(960, 756)
+2025-11-19 12:51:02 |     INFO | Calibration Point 16: Screen(1392, 756)
+2025-11-19 12:51:05 |     INFO | Calibration Point 17: Screen(96, 1026)
+2025-11-19 12:51:09 |     INFO | Calibration Point 18: Screen(528, 1026)
+2025-11-19 12:51:13 |     INFO | Calibration Point 19: Screen(960, 1026)
+2025-11-19 12:51:17 |     INFO | Calibration Point 20: Screen(1392, 1026)
+2025-11-19 12:51:20 |     INFO | Calibration Point 21: Screen(1824, 1026)
+2025-11-19 12:51:24 |     INFO | 
+2025-11-19 12:51:24 |     INFO | ================================================================================
+2025-11-19 12:51:24 |     INFO | CALIBRATION COMPLETE
+2025-11-19 12:51:24 |     INFO | ================================================================================
+2025-11-19 12:51:24 |     INFO | Total samples collected: 1259
+2025-11-19 12:51:24 |     INFO | Training Error X: 313.62 pixels
+2025-11-19 12:51:24 |     INFO | Training Error Y: 125.37 pixels
+2025-11-19 12:51:24 |     INFO | ================================================================================
+2025-11-19 12:51:24 |     INFO | Calibration data saved to: logs\session_20251119_124942\calibration.json
+2025-11-19 12:54:51 |     INFO | 
+2025-11-19 12:54:51 |     INFO | ================================================================================
+2025-11-19 12:54:51 |     INFO | CALIBRATION STARTED - 9 points, 60 frames/point
+2025-11-19 12:54:51 |     INFO | ================================================================================
+2025-11-19 12:55:14 |     INFO | Calibration Point 1: Screen(96, 54)
+2025-11-19 12:55:18 |     INFO | Calibration Point 2: Screen(960, 54)
+2025-11-19 12:55:23 |     INFO | Calibration Point 3: Screen(1824, 54)
+2025-11-19 12:55:29 |     INFO | Calibration Point 4: Screen(96, 540)
+2025-11-19 12:55:35 |     INFO | Calibration Point 5: Screen(960, 540)
+2025-11-19 12:55:41 |     INFO | Calibration Point 6: Screen(1824, 540)
+2025-11-19 12:55:47 |     INFO | Calibration Point 7: Screen(96, 1026)
+2025-11-19 12:55:53 |     INFO | Calibration Point 8: Screen(960, 1026)
+2025-11-19 12:55:59 |     INFO | Calibration Point 9: Screen(1824, 1026)
+2025-11-19 12:56:05 |     INFO | 
+2025-11-19 12:56:05 |     INFO | ================================================================================
+2025-11-19 12:56:05 |     INFO | CALIBRATION COMPLETE
+2025-11-19 12:56:05 |     INFO | ================================================================================
+2025-11-19 12:56:05 |     INFO | Total samples collected: 539
+2025-11-19 12:56:05 |     INFO | Training Error X: 357.42 pixels
+2025-11-19 12:56:05 |     INFO | Training Error Y: 133.90 pixels
+2025-11-19 12:56:05 |     INFO | ================================================================================
+2025-11-19 12:56:05 |     INFO | Calibration data saved to: logs\session_20251119_124942\calibration.json

@@ -6,7 +6,7 @@ Features:
 - Precise eye movement tracking for mouse control
 - Blink detection for mouse clicks
 - Smooth cursor movement with moving average
-- Auto-calibration
+- Auto-calibration with 15 points (5x3 grid)
 - Screen size adaptation
 - Debug visualization
 """
@@ -72,6 +72,30 @@ class EyeControlledMouse:
         self.last_valid_x = None
         self.last_valid_y = None
         self.smooth_factor = 0.3
+        
+        # Kalman Filter parameters for advanced smoothing
+        self.use_kalman_filter = True
+        self.kalman_initialized = False
+        # State vector: [x, y, vx, vy] (position and velocity)
+        self.kalman_state = np.zeros(4)
+        # State covariance matrix
+        self.kalman_P = np.eye(4) * 1000
+        # Process noise covariance
+        self.kalman_Q = np.eye(4) * 0.01
+        # Measurement noise covariance
+        self.kalman_R = np.eye(2) * 10
+        # State transition matrix
+        self.kalman_F = np.array([
+            [1, 0, 1, 0],  # x = x + vx
+            [0, 1, 0, 1],  # y = y + vy
+            [0, 0, 1, 0],  # vx = vx
+            [0, 0, 0, 1]   # vy = vy
+        ])
+        # Measurement matrix (we only measure position)
+        self.kalman_H = np.array([
+            [1, 0, 0, 0],
+            [0, 1, 0, 0]
+        ])
 
         # Window state and blink detection
         self.window_state = "normal"
@@ -79,16 +103,27 @@ class EyeControlledMouse:
         self.last_blink_time = 0
         self.BLINK_TIMEOUT = 1.0
 
-        # Calibration parameters
+        # Calibration parameters - Enhanced to 15 points (5x3 grid)
         self.calibration_points = [
+            # Top row (5 points)
             ((0.1, 0.1), "top left"),
+            ((0.325, 0.1), "top quarter left"),
             ((0.5, 0.1), "top center"),
+            ((0.675, 0.1), "top quarter right"),
             ((0.9, 0.1), "top right"),
+            
+            # Middle row (5 points)
             ((0.1, 0.5), "middle left"),
+            ((0.325, 0.5), "middle quarter left"),
             ((0.5, 0.5), "center"),
+            ((0.675, 0.5), "middle quarter right"),
             ((0.9, 0.5), "middle right"),
+            
+            # Bottom row (5 points)
             ((0.1, 0.9), "bottom left"),
+            ((0.325, 0.9), "bottom quarter left"),
             ((0.5, 0.9), "bottom center"),
+            ((0.675, 0.9), "bottom quarter right"),
             ((0.9, 0.9), "bottom right")
         ]
         self.current_calibration_point = 0
@@ -178,39 +213,97 @@ class EyeControlledMouse:
         return (transformed + 1) / 2
 
     def smooth_coordinates(self, x: float, y: float) -> Tuple[int, int]:
-        """Apply advanced smoothing to coordinates."""
-        if self.last_valid_x is None:
-            self.last_valid_x = x
-            self.last_valid_y = y
-            self.x_coords.clear()
-            self.y_coords.clear()
+        """Apply advanced smoothing with Kalman Filter to coordinates."""
+        if self.use_kalman_filter:
+            return self.kalman_filter_update(x, y)
+        else:
+            # Original smoothing method
+            if self.last_valid_x is None:
+                self.last_valid_x = x
+                self.last_valid_y = y
+                self.x_coords.clear()
+                self.y_coords.clear()
 
-        # Handle large movements (outlier detection)
-        max_delta = 300
-        if abs(x - self.last_valid_x) > max_delta or abs(y - self.last_valid_y) > max_delta:
-            x = int(self.last_valid_x * 0.7 + x * 0.3)
-            y = int(self.last_valid_y * 0.7 + y * 0.3)
+            # Handle large movements (outlier detection)
+            max_delta = 300
+            if abs(x - self.last_valid_x) > max_delta or abs(y - self.last_valid_y) > max_delta:
+                x = int(self.last_valid_x * 0.7 + x * 0.3)
+                y = int(self.last_valid_y * 0.7 + y * 0.3)
 
-        # Apply moving average and exponential smoothing
-        self.x_coords.append(x)
-        self.y_coords.append(y)
+            # Apply moving average and exponential smoothing
+            self.x_coords.append(x)
+            self.y_coords.append(y)
+            
+            ma_x = np.mean(self.x_coords)
+            ma_y = np.mean(self.y_coords)
+            
+            smoothed_x = int(ma_x * self.smooth_factor + (1 - self.smooth_factor) * self.last_valid_x)
+            smoothed_y = int(ma_y * self.smooth_factor + (1 - self.smooth_factor) * self.last_valid_y)
+
+            self.last_valid_x = smoothed_x
+            self.last_valid_y = smoothed_y
+
+            return smoothed_x, smoothed_y
+    
+    def kalman_filter_update(self, measured_x: float, measured_y: float) -> Tuple[int, int]:
+        """
+        Kalman Filter implementation for smooth and accurate eye tracking.
         
-        ma_x = np.mean(self.x_coords)
-        ma_y = np.mean(self.y_coords)
+        The Kalman Filter works in two steps:
+        1. Prediction: Estimate where the cursor should be based on previous velocity
+        2. Update: Correct the prediction using the new measurement
         
-        smoothed_x = int(ma_x * self.smooth_factor + (1 - self.smooth_factor) * self.last_valid_x)
-        smoothed_y = int(ma_y * self.smooth_factor + (1 - self.smooth_factor) * self.last_valid_y)
-
-        self.last_valid_x = smoothed_x
-        self.last_valid_y = smoothed_y
-
-        return smoothed_x, smoothed_y
+        This reduces jitter while maintaining responsiveness.
+        """
+        # Initialize Kalman filter on first call
+        if not self.kalman_initialized:
+            self.kalman_state = np.array([measured_x, measured_y, 0, 0])
+            self.kalman_initialized = True
+            return int(measured_x), int(measured_y)
+        
+        # PREDICTION STEP
+        # Predict next state: x_predicted = F * x_current
+        predicted_state = self.kalman_F @ self.kalman_state
+        
+        # Predict error covariance: P_predicted = F * P * F^T + Q
+        predicted_P = self.kalman_F @ self.kalman_P @ self.kalman_F.T + self.kalman_Q
+        
+        # UPDATE STEP
+        # Measurement vector (what we actually observed)
+        measurement = np.array([measured_x, measured_y])
+        
+        # Innovation (difference between measurement and prediction)
+        innovation = measurement - (self.kalman_H @ predicted_state)
+        
+        # Innovation covariance: S = H * P * H^T + R
+        S = self.kalman_H @ predicted_P @ self.kalman_H.T + self.kalman_R
+        
+        # Kalman Gain: K = P * H^T * S^-1
+        # This determines how much we trust the measurement vs prediction
+        kalman_gain = predicted_P @ self.kalman_H.T @ np.linalg.inv(S)
+        
+        # Update state estimate: x = x_predicted + K * innovation
+        self.kalman_state = predicted_state + kalman_gain @ innovation
+        
+        # Update error covariance: P = (I - K * H) * P
+        I = np.eye(4)
+        self.kalman_P = (I - kalman_gain @ self.kalman_H) @ predicted_P
+        
+        # Extract filtered position
+        filtered_x = int(self.kalman_state[0])
+        filtered_y = int(self.kalman_state[1])
+        
+        # Clamp to reasonable values
+        filtered_x = max(0, min(filtered_x, self.display_width))
+        filtered_y = max(0, min(filtered_y, self.display_height))
+        
+        return filtered_x, filtered_y
 
     def start_calibration(self):
         """Initialize the calibration process with voice instruction."""
         if not self.calibration_started:
             self.calibration_started = True
-            self.tts_engine.say("Starting eye tracking calibration. Please follow the numbered red dots.")
+            self.tts_engine.say("Starting eye tracking calibration with 15 points. Please follow the numbered red dots.")
             self.tts_engine.runAndWait()
             time.sleep(1)
             self.announce_current_point()
@@ -224,7 +317,7 @@ class EyeControlledMouse:
         self.last_speech_time = time.time()
 
     def calibrate(self, landmarks: np.ndarray) -> None:
-        """Collect calibration data for 9-point calibration."""
+        """Collect calibration data for 15-point calibration."""
         if not self.calibrated:
             if not self.calibration_started:
                 self.start_calibration()
@@ -290,15 +383,15 @@ class EyeControlledMouse:
             return screen_x, screen_y
 
         # Use calibration data to adjust the mapping
-        # Get calibration values for different positions
-        center_point = self.calibration_mapping[4]['eye']  # center
+        # Get calibration values for different positions (using 15-point grid)
+        center_point = self.calibration_mapping[7]['eye']  # center (point 8)
         center_x = (center_point[0][0] + center_point[1][0]) / 2
         center_y = (center_point[0][1] + center_point[1][1]) / 2
 
-        left_point = self.calibration_mapping[3]['eye']  # middle left
-        right_point = self.calibration_mapping[5]['eye']  # middle right
-        top_point = self.calibration_mapping[1]['eye']    # top center
-        bottom_point = self.calibration_mapping[7]['eye'] # bottom center
+        left_point = self.calibration_mapping[5]['eye']  # middle left (point 6)
+        right_point = self.calibration_mapping[9]['eye']  # middle right (point 10)
+        top_point = self.calibration_mapping[2]['eye']    # top center (point 3)
+        bottom_point = self.calibration_mapping[12]['eye'] # bottom center (point 13)
 
         left_x = (left_point[0][0] + left_point[1][0]) / 2
         right_x = (right_point[0][0] + right_point[1][0]) / 2
@@ -468,11 +561,16 @@ class EyeControlledMouse:
                 cv2.circle(frame, (int(point[0]), int(point[1])),
                            2, (255, 0, 0), -1)
 
-        # Display EAR values
+        # Display EAR values and filter status
         cv2.putText(frame, f"Left EAR: {left_ear:.2f}", (10, 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         cv2.putText(frame, f"Right EAR: {right_ear:.2f}", (10, 60),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
+        
+        # Display filter status
+        filter_status = "Kalman Filter: ON" if self.use_kalman_filter else "Kalman Filter: OFF"
+        cv2.putText(frame, filter_status, (10, 90),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 0), 2)
 
         # Draw calibration points during calibration
         if not self.calibrated and self.calibration_started:
@@ -480,7 +578,7 @@ class EyeControlledMouse:
             if not self.calibrated:
                 frame[:] = (0, 0, 0)  # Black background
 
-            # Draw all calibration points
+            # Draw all 15 calibration points
             for idx, (point, desc) in enumerate(self.calibration_points):
                 x = int(point[0] * self.monitor_width)
                 y = int(point[1] * self.monitor_height)
@@ -513,7 +611,8 @@ class EyeControlledMouse:
 
     def run(self) -> None:
         """Main loop for eye-controlled mouse."""
-        print("Starting eye-controlled mouse. Look straight ahead for calibration.")
+        print("Starting eye-controlled mouse with 15-point calibration.")
+        print("Look straight ahead for calibration.")
         print("Blink left eye for click, both eyes for 1 second to exit.")
 
         # Set initial window to fullscreen

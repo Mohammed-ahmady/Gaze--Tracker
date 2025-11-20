@@ -1,0 +1,100 @@
+def run_calibration(self, num_points: int = 9):
+    """
+    Run the calibration process.
+    
+    Args:
+        num_points: Number of calibration points (9 or 25)
+    """
+    print(f"\nStarting {num_points}-point calibration...")
+    print("Please follow the RED dots with your eyes.")
+    print("Keep your head still while looking at each point.")
+    
+    # Start calibration system
+    self.calibration.start_calibration(num_points)
+    
+    # Try to use overlay, fall back to OpenCV window
+    overlay = None
+    if CalibrationOverlay is not None:
+        try:
+            overlay = CalibrationOverlay()
+        except Exception as e:
+            print(f"Failed to create overlay ({e}), falling back to OpenCV window")
+    
+    # For tracking face detection
+    face_detected_count = 0
+    no_face_warning_shown = False
+    
+    while True:
+        ret, frame = self.cap.read()
+        if not ret:
+            print("Error reading from camera!")
+            break
+        
+        frame = cv2.flip(frame, 1)
+        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        results = self.face_mesh.process(rgb_frame)
+        
+        if results.multi_face_landmarks:
+            face_detected_count += 1
+            no_face_warning_shown = False
+            
+            # Extract landmarks
+            landmarks = np.array([
+                (lm.x * self.frame_width, lm.y * self.frame_height)
+                for lm in results.multi_face_landmarks[0].landmark
+            ])
+            
+            # Get eye-relative iris and nose positions
+            left_iris = self.get_eye_relative_pos(landmarks, self.LEFT_EYE, self.LEFT_IRIS)
+            right_iris = self.get_eye_relative_pos(landmarks, self.RIGHT_EYE, self.RIGHT_IRIS)
+            nose_tip = self.get_nose_tip(landmarks)
+            
+            # Collect calibration data
+            is_complete = self.calibration.collect_calibration_frame(
+                left_iris, right_iris, nose_tip
+            )
+            
+            if is_complete:
+                print("✓ Calibration data collection complete!")
+                break
+        else:
+            # No face detected
+            if not no_face_warning_shown and face_detected_count == 0:
+                print("⚠ WARNING: No face detected! Please position your face in front of the camera.")
+                no_face_warning_shown = True
+        
+        # Render calibration UI
+        if overlay is not None:
+            try:
+                overlay.render(
+                    self.calibration.calibration_grid,
+                    self.calibration.current_point_idx,
+                    self.calibration.current_frame_count,
+                    self.calibration.frames_per_point,
+                )
+            except Exception as e:
+                print(f"Overlay render failed ({e}). Switching to OpenCV window.")
+                if overlay is not None:
+                    overlay.close()
+                    overlay = None
+                    cv2.namedWindow("Calibration", cv2.WINDOW_NORMAL)
+                    cv2.setWindowProperty("Calibration", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+        
+        # If no overlay, draw using OpenCV window
+        if overlay is None:
+            canvas = self.calibration.draw_calibration_interface(frame)
+            cv2.imshow("Calibration", canvas)
+        
+        # Check for cancel
+        key = cv2.waitKey(1) & 0xFF
+        if key == 27:  # ESC
+            print("\nCalibration cancelled!")
+            if overlay is not None:
+                overlay.close()
+            return
+    
+    # Cleanup
+    if overlay is not None:
+        overlay.close()
+    else:
+        cv2.destroyWindow("Calibration")
