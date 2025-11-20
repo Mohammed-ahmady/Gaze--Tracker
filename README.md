@@ -153,11 +153,6 @@ Gaze--Tracker/
 │   ├── analyze_logs.py           # Log analyzer
 │   └── test_camera.py            # Camera test
 │
-├── docs/                     # 📚 Documentation & Research
-│   ├── CALIBRATION_GUIDE.md
-│   ├── LOGGING_COMPLETE.md
-│   └── ...project proposals & PDFs
-│
 ├── logs/                     # 📊 Auto-generated session logs
 ├── data/                     # 💾 Calibration data storage
 ├── config/                   # ⚙️ Configuration files
@@ -279,16 +274,6 @@ MIT License - See LICENSE file for details
 - **MediaPipe** for face mesh and iris tracking
 - **OpenCV** for computer vision utilities
 - **scikit-learn** for machine learning models
-- Research papers in `docs/` folder for theoretical foundation
-
----
-
-## 📞 Support
-
-- **Issues:** [GitHub Issues](https://github.com/Mohammed-ahmady/Gaze--Tracker/issues)
-- **Documentation:** See `docs/` folder
-- **Version 1 Manual:** [version1/MANUAL.md](./version1/MANUAL.md)
-- **Version 2 Manual:** [version2/MANUAL.md](./version2/MANUAL.md)
 
 ---
 
@@ -388,15 +373,7 @@ python scripts/deep_analysis.py
 
 ---
 
-## 📚 Documentation
 
-See `docs/` folder for:
-- `QUICK_START.md` - Getting started guide
-- `CALIBRATION_GUIDE.md` - Detailed calibration instructions
-- `ADVANCED_CALIBRATION_GUIDE.md` - Advanced techniques
-- `LOGGING_COMPLETE.md` - Logging system documentation
-- `TECHNICAL_DETAILS.md` - Technical implementation details
-- Project proposals and references
 
 ---
 
