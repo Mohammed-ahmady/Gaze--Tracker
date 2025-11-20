@@ -8,9 +8,8 @@
 4. [Getting Started](#getting-started)
 5. [Calibration Process](#calibration-process)
 6. [Using the System](#using-the-system)
-7. [Troubleshooting](#troubleshooting)
-8. [Advanced Settings](#advanced-settings)
-9. [FAQ](#faq)
+7. [Advanced Settings](#advanced-settings)
+
 
 ---
 
