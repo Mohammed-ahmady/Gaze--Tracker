@@ -4,9 +4,12 @@
 
 Control your computer cursor using only your eyes! This project provides two versions of an eye tracking system built with MediaPipe and machine learning.
 
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/Python-3.7--3.12-blue.svg)](https://www.python.org/downloads/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10.8-green.svg)](https://mediapipe.dev/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+> **🚀 Super Easy Install:** Just run `python install.py` - works on ANY Python version, ANY system!  
+> The installer automatically finds compatible Python, installs everything, and creates runner scripts.
 
 ---
 
