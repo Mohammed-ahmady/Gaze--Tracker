@@ -36,60 +36,65 @@ This repository contains **two complete versions** of the eye tracking system:
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- **Python 3.9, 3.10, 3.11, or 3.12** (⚠️ NOT 3.13+)
+### Method 1: Smart Installer ⭐ RECOMMENDED
+
+**One command install - works with Python 3.7-3.12:**
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/Mohammed-ahmady/Gaze--Tracker.git
+cd Gaze--Tracker
+
+# 2. Check if your Python is compatible
+python check_compatibility.py
+
+# 3. Install everything automatically
+python install_smart.py
+
+# 4. Run your chosen version
+python version1/main.py              # Basic version
+python version2/enhanced_tracker.py   # Advanced version
+```
+
+**Or use the automated setup script:**
+- **Windows**: `.\setup.ps1`
+- **Linux/Mac**: `chmod +x setup.sh && ./setup.sh`
+
+### Method 2: Manual Install
+
+**If you have Python 3.9-3.12:**
+
+```bash
+cd version1  # or version2
+pip install -r requirements.txt
+python main.py  # or enhanced_tracker.py
+```
+
+### Method 3: Conda (Most Reliable)
+
+```bash
+conda env create -f environment.yml
+conda activate gazeassist
+python version1/main.py
+```
+
+### Method 4: Docker (Cross-Platform)
+
+```bash
+docker build -t gazeassist .
+docker run -it gazeassist python version1/main.py
+```
+
+**📖 Full installation guide:** [QUICK_INSTALL.md](./QUICK_INSTALL.md)
+
+---
+
+### ⚠️ Prerequisites
+- **Python 3.7-3.12** (NOT 3.13+) - MediaPipe limitation
 - **Webcam** (720p or better recommended)
-- **Windows** (tested on Windows 10/11)
+- **Windows 10/11, Linux, or macOS**
 
-> **Having Python 3.13?** MediaPipe doesn't support it yet. Download Python 3.12 from [python.org](https://www.python.org/downloads/) and use that installation.
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Mohammed-ahmady/Gaze--Tracker.git
-   cd Gaze--Tracker
-   ```
-
-2. **Choose your version and install dependencies**
-
-   **For Version 1 (Basic):**
-   ```bash
-   cd version1
-   
-   # Check Python version (must be 3.9-3.12)
-   python --version
-   
-   # Install dependencies
-   pip install -r requirements.txt
-   
-   # Run
-   python main.py
-   ```
-
-   **For Version 2 (Advanced):**
-   ```bash
-   cd version2
-   
-   # Check Python version (must be 3.9-3.12)
-   python --version
-   
-   # Install dependencies
-   pip install -r requirements.txt
-   
-   # Run
-   python enhanced_tracker.py
-   ```
-   
-   **If you get "No matching distribution found for mediapipe":**  
-   You're using Python 3.13. Use a Python 3.12 installation instead:
-   ```bash
-   # Use specific Python version
-   C:\Python312\python.exe -m pip install -r requirements.txt
-   C:\Python312\python.exe main.py
-   ```
-   
-   See **[Version 1 INSTALL.md](./version1/INSTALL.md)** or **[Version 2 INSTALL.md](./version2/INSTALL.md)** for detailed instructions.
+> **Have Python 3.13?** The smart installer will detect this and show you how to fix it.
 
 3. **Follow the on-screen setup wizard**
    - Position your camera at eye level
@@ -103,9 +108,12 @@ This repository contains **two complete versions** of the eye tracking system:
 
 Each version has complete documentation:
 
+- **🚀 [Quick Installation Guide](./QUICK_INSTALL.md)** - All installation methods
 - **[Version 1 README](./version1/README.md)** - Features, installation, usage
-- **[Version 1 MANUAL](./version1/MANUAL.md)** - Detailed user guide with troubleshooting
-- **[Version 2 README](./version2/README.md)** - Features, installation, usage
+- **[Version 1 INSTALL](./version1/INSTALL.md)** - Detailed installation troubleshooting
+- **[Version 1 MANUAL](./version1/MANUAL.md)** - Complete user guide
+- **[Version 2 README](./version2/README.md)** - Features, installation, usage  
+- **[Version 2 INSTALL](./version2/INSTALL.md)** - Detailed installation troubleshooting
 - **[Version 2 MANUAL](./version2/MANUAL.md)** - Comprehensive manual with advanced features
 
 ---
@@ -316,15 +324,16 @@ MIT License - See LICENSE file for details
 
 ## 🚦 Getting Started Checklist
 
-- [ ] **Python 3.9-3.12 installed** (NOT 3.13+) - Check with `python --version`
-- [ ] Webcam connected and working
-- [ ] Good lighting setup (bright, even, no glare)
-- [ ] Camera at eye level, 50-70cm away
-- [ ] Dependencies installed (`pip install -r requirements.txt`)
-- [ ] Diagnostic test passed (`python scripts/diagnose_eye_movement.py`)
-- [ ] Choose Version 1 or Version 2
-- [ ] Read the installation guide (INSTALL.md) and manual (MANUAL.md)
-- [ ] Run calibration and start tracking!
+- [ ] **Clone repository**: `git clone https://github.com/Mohammed-ahmady/Gaze--Tracker.git`
+- [ ] **Check Python compatibility**: `python check_compatibility.py`
+- [ ] **Install packages**: `python install_smart.py` (or use `setup.ps1`/`setup.sh`)
+- [ ] **Test camera**: `python scripts/test_camera.py`
+- [ ] **Test eye detection**: `python scripts/diagnose_eye_movement.py`
+- [ ] **Setup environment**: Good lighting, camera at eye level (50-70cm away)
+- [ ] **Choose version**: Version 1 (simple) or Version 2 (advanced)
+- [ ] **Read the manual**: [version1/MANUAL.md](./version1/MANUAL.md) or [version2/MANUAL.md](./version2/MANUAL.md)
+- [ ] **Run calibration**: Follow on-screen instructions carefully
+- [ ] **Start tracking**: Press 'C' to enable cursor control!
 
 ---
 
