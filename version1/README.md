@@ -163,14 +163,6 @@ version1/
 
 ---
 
-## Support
-For issues or questions:
-- Check MANUAL.md for detailed instructions
-- Review troubleshooting section above
-- Recalibrate the system
-- Ensure all requirements are met
-
----
 
 ## License
 Academic project for SHA University - Group 24 (2025/2026)
