@@ -137,14 +137,47 @@ docker run -it gazeassist python version1/main.py
 
 **You have Python 3.13 or higher** - MediaPipe doesn't support it yet.
 
-**Fix:**
-1. Download Python 3.11 or 3.12: https://www.python.org/downloads/
-2. Install to separate directory (e.g., `C:\Python312`)
-3. Use that version:
+**Fix (Step-by-Step):**
+
+1. **Download Python 3.12:**
+   - Go to https://www.python.org/downloads/release/python-3120/
+   - Download "Windows installer (64-bit)"
+
+2. **Install Python 3.12:**
+   - Run installer
+   - ✅ Check "Add Python 3.12 to PATH" (IMPORTANT!)
+   - Choose "Customize installation"
+   - Install location: `C:\Python312\`
+   - Complete installation
+
+3. **Verify Python 3.12 is installed:**
+   ```bash
+   C:\Python312\python.exe --version
+   # Should show: Python 3.12.x
+   ```
+
+4. **Use Python 3.12 to install GazeAssist:**
    ```bash
    C:\Python312\python.exe check_compatibility.py
    C:\Python312\python.exe install_smart.py
    ```
+
+5. **Run with Python 3.12:**
+   ```bash
+   C:\Python312\python.exe version1/main.py
+   ```
+
+**⚠️ IMPORTANT:** Creating a venv with `python -m venv venv` will use Python 3.13 (won't work!). Instead:
+```bash
+# Create venv using Python 3.12
+C:\Python312\python.exe -m venv venv
+
+# Activate it
+.\venv\Scripts\activate
+
+# Now python will use 3.12
+python install_smart.py
+```
 
 ### "ModuleNotFoundError" after installation
 

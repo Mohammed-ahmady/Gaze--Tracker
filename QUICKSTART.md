@@ -76,11 +76,19 @@ python scripts/deep_analysis.py
 ### "No matching distribution found for mediapipe"
 **→ You have Python 3.13 - it's not supported yet**
 
-**Fix:** Install Python 3.12 and use it:
+**Fix (Quick Steps):**
+1. Download Python 3.12: https://www.python.org/downloads/release/python-3120/
+2. Install to `C:\Python312\` (check "Add to PATH")
+3. Verify: `C:\Python312\python.exe --version`
+4. Use it:
 ```bash
 C:\Python312\python.exe check_compatibility.py
 C:\Python312\python.exe install_smart.py
+C:\Python312\python.exe version1/main.py
 ```
+
+**⚠️ Common Mistake:** Don't create venv with `python -m venv venv` - it will use Python 3.13!  
+**✅ Correct Way:** `C:\Python312\python.exe -m venv venv`
 
 ### Poor tracking accuracy
 1. Run diagnostic: `python scripts/diagnose_eye_movement.py`

@@ -36,65 +36,34 @@ This repository contains **two complete versions** of the eye tracking system:
 
 ## 🚀 Quick Start
 
-### Method 1: Smart Installer ⭐ RECOMMENDED
+### Universal Installer - Works on ANY System ⭐
 
-**One command install - works with Python 3.7-3.12:**
+**One command that handles everything automatically:**
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/Mohammed-ahmady/Gaze--Tracker.git
 cd Gaze--Tracker
 
-# 2. Check if your Python is compatible
-python check_compatibility.py
+# 2. Run the universal installer (works on ANY Python!)
+python install.py
 
-# 3. Install everything automatically
-python install_smart.py
-
-# 4. Run your chosen version
-python version1/main.py              # Basic version
-python version2/enhanced_tracker.py   # Advanced version
+# 3. Run GazeAssist
+run_version1.bat      # Windows - Version 1
+run_version2.bat      # Windows - Version 2
+./run_version1.sh     # Linux/Mac - Version 1
+./run_version2.sh     # Linux/Mac - Version 2
 ```
 
-**Or use the automated setup script:**
-- **Windows**: `.\setup.ps1`
-- **Linux/Mac**: `chmod +x setup.sh && ./setup.sh`
+**The universal installer will:**
+- ✅ Detect your Python version
+- ✅ Find compatible Python on your system (if needed)
+- ✅ Guide you to install Python 3.12 (if no compatible version found)
+- ✅ Install all dependencies with correct versions
+- ✅ Create easy-to-use runner scripts
+- ✅ Verify everything works
 
-### Method 2: Manual Install
-
-**If you have Python 3.9-3.12:**
-
-```bash
-cd version1  # or version2
-pip install -r requirements.txt
-python main.py  # or enhanced_tracker.py
-```
-
-### Method 3: Conda (Most Reliable)
-
-```bash
-conda env create -f environment.yml
-conda activate gazeassist
-python version1/main.py
-```
-
-### Method 4: Docker (Cross-Platform)
-
-```bash
-docker build -t gazeassist .
-docker run -it gazeassist python version1/main.py
-```
-
-**📖 Full installation guide:** [QUICK_INSTALL.md](./QUICK_INSTALL.md)
-
----
-
-### ⚠️ Prerequisites
-- **Python 3.7-3.12** (NOT 3.13+) - MediaPipe limitation
-- **Webcam** (720p or better recommended)
-- **Windows 10/11, Linux, or macOS**
-
-> **Have Python 3.13?** The smart installer will detect this and show you how to fix it.
+**No Python 3.7-3.12?** The installer will show you exactly how to get it!
 
 3. **Follow the on-screen setup wizard**
    - Position your camera at eye level
