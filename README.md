@@ -52,10 +52,8 @@ cd Gaze--Tracker
 python install.py
 
 # 3. Run GazeAssist
-run_version1.bat      # Windows - Version 1
-run_version2.bat      # Windows - Version 2
-./run_version1.sh     # Linux/Mac - Version 1
-./run_version2.sh     # Linux/Mac - Version 2
+./run_version1.bat      # Windows - Version 1
+./run_version2.bat      # Windows - Version 2
 ```
 
 **The universal installer will:**
