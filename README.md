@@ -14,12 +14,15 @@ Control your computer cursor using only your eyes! This project provides two ver
 
 This repository contains **two complete versions** of the eye tracking system:
 
+> **⚠️ IMPORTANT:** Requires **Python 3.9, 3.10, 3.11, or 3.12** (NOT Python 3.13+)  
+> MediaPipe doesn't support Python 3.13 yet. See installation guides below.
+
 ### **Version 1 - Basic Eye Tracker** 🎯
 - Simple 9-point calibration
 - Ratio-based gaze mapping
 - Voice guidance during calibration
 - Perfect for beginners and quick setup
-- **➡️ [Go to Version 1](./version1/)**
+- **➡️ [Go to Version 1](./version1/)** | **[Installation Guide](./version1/INSTALL.md)**
 
 ### **Version 2 - Advanced Eye Tracker** 🚀
 - ML-powered 21-point calibration
@@ -27,16 +30,18 @@ This repository contains **two complete versions** of the eye tracking system:
 - Advanced control panel with live adjustments
 - Comprehensive logging and diagnostics
 - Real-time performance monitoring
-- **➡️ [Go to Version 2](./version2/)**
+- **➡️ [Go to Version 2](./version2/)** | **[Installation Guide](./version2/INSTALL.md)**
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- **Python 3.9 or higher**
+- **Python 3.9, 3.10, 3.11, or 3.12** (⚠️ NOT 3.13+)
 - **Webcam** (720p or better recommended)
 - **Windows** (tested on Windows 10/11)
+
+> **Having Python 3.13?** MediaPipe doesn't support it yet. Download Python 3.12 from [python.org](https://www.python.org/downloads/) and use that installation.
 
 ### Installation
 
@@ -51,16 +56,40 @@ This repository contains **two complete versions** of the eye tracking system:
    **For Version 1 (Basic):**
    ```bash
    cd version1
+   
+   # Check Python version (must be 3.9-3.12)
+   python --version
+   
+   # Install dependencies
    pip install -r requirements.txt
+   
+   # Run
    python main.py
    ```
 
    **For Version 2 (Advanced):**
    ```bash
    cd version2
+   
+   # Check Python version (must be 3.9-3.12)
+   python --version
+   
+   # Install dependencies
    pip install -r requirements.txt
+   
+   # Run
    python enhanced_tracker.py
    ```
+   
+   **If you get "No matching distribution found for mediapipe":**  
+   You're using Python 3.13. Use a Python 3.12 installation instead:
+   ```bash
+   # Use specific Python version
+   C:\Python312\python.exe -m pip install -r requirements.txt
+   C:\Python312\python.exe main.py
+   ```
+   
+   See **[Version 1 INSTALL.md](./version1/INSTALL.md)** or **[Version 2 INSTALL.md](./version2/INSTALL.md)** for detailed instructions.
 
 3. **Follow the on-screen setup wizard**
    - Position your camera at eye level
@@ -198,6 +227,22 @@ Gaze--Tracker/
 - Update pip: `python -m pip install --upgrade pip`
 - Install Visual C++ redistributables (for MediaPipe)
 
+### ⚠️ Error: "No matching distribution found for mediapipe"
+**You're using Python 3.13** - MediaPipe doesn't support it yet.
+
+**Fix:** Install and use Python 3.12:
+1. Download from https://www.python.org/downloads/release/python-3120/
+2. Install to `C:\Python312\`
+3. Use that version:
+   ```bash
+   C:\Python312\python.exe -m pip install -r requirements.txt
+   C:\Python312\python.exe main.py
+   ```
+
+See detailed installation guides:
+- **[Version 1 Installation Guide](./version1/INSTALL.md)**
+- **[Version 2 Installation Guide](./version2/INSTALL.md)**
+
 For detailed troubleshooting, see the MANUAL.md files in each version folder.
 
 ---
@@ -271,14 +316,14 @@ MIT License - See LICENSE file for details
 
 ## 🚦 Getting Started Checklist
 
-- [ ] Python 3.9+ installed
+- [ ] **Python 3.9-3.12 installed** (NOT 3.13+) - Check with `python --version`
 - [ ] Webcam connected and working
 - [ ] Good lighting setup (bright, even, no glare)
 - [ ] Camera at eye level, 50-70cm away
 - [ ] Dependencies installed (`pip install -r requirements.txt`)
 - [ ] Diagnostic test passed (`python scripts/diagnose_eye_movement.py`)
 - [ ] Choose Version 1 or Version 2
-- [ ] Read the MANUAL.md for your chosen version
+- [ ] Read the installation guide (INSTALL.md) and manual (MANUAL.md)
 - [ ] Run calibration and start tracking!
 
 ---
