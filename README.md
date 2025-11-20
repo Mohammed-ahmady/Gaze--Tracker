@@ -430,16 +430,4 @@ See `docs/` folder for:
 - **Calibration:** 21 points with edge weighting (9x corners, 5x edges)
 - **Blink Detection:** EAR < 0.15 (disabled when looking down)
 
----
 
-## 📞 Support
-
-For issues:
-1. Run diagnostics: `python scripts/diagnose_eye_movement.py`
-2. Analyze logs: `python scripts/deep_analysis.py`
-3. Check `logs/latest/analysis.txt` for recommendations
-4. Review `docs/TROUBLESHOOTING.md`
-
----
-
-**Made with 👁️ by SHA Group 24**
